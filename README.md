@@ -23,38 +23,34 @@ Each branch has its own `README.md` with the exact build/run/deploy steps.
 
 ---
 
-## Deploy everything
+## Deploy — the easy path
 
-### 1. Push (one-time)
+**Two moves total.** The four server games go up together via one Render
+Blueprint; Alagulimane is a static site, so it goes on GitHub Pages.
 
-```bash
-gh repo create games --public --source=. --remote=origin
-git push origin --all          # main + all five game branches
-```
+### 1. The four servers → Render Blueprint (`render.yaml`)
 
-### 2. Container games — `hangman`, `wordle`, `sudoku`, `25wol`
+[render.com](https://render.com) → **New → Blueprint** → pick this repo → **Apply**.
 
-Same steps for each, once per game:
+`render.yaml` (on `main`) defines all four as Docker web services, each building
+the `Dockerfile` at the root of its own branch. You get four
+`https://<name>.onrender.com` URLs. Free instances sleep after ~15 min idle and
+cold-start (~30 s) on the next hit — fine for demos.
 
-1. [render.com](https://render.com) → **New → Web Service** → connect this repo
-2. **Branch**: `hangman` (then `wordle`, `sudoku`, `25wol`)
-3. **Runtime**: Docker — it picks up the `Dockerfile` at the branch root
-4. **Create** → you get `https://<name>.onrender.com`
+### 2. Alagulimane → GitHub Pages
 
-The `Dockerfile` is the whole config. Free instances cold-start after idle.
-Fly.io works the same way: `git switch hangman && fly launch --now`.
+Repo **Settings → Pages → Source: GitHub Actions**. The `alagulimane` branch
+ships `.github/workflows/web.yml`, which builds the wasm bundle and publishes it
+on every push to that branch. URL: `https://<you>.github.io/<repo>/`.
 
-### 3. Alagulimane — `alagulimane`
+> Pages is static-only, so it can host **only** Alagulimane — the other four are
+> live servers (a terminal, Flask, Node+WebSocket) and need a container host.
 
-Any one of:
+### Other hosts
 
-- **GitHub Pages**: repo **Settings → Pages → Source: GitHub Actions**. The
-  branch ships `.github/workflows/web.yml`, which builds the wasm bundle and
-  publishes on every push to `alagulimane`. URL: `https://<you>.github.io/games/`.
-- **Static host**: `./gradlew wasmJsBrowserDistribution` on the branch, then drop
-  `build/dist/wasmJs/productionExecutable/` on Netlify / Cloudflare Pages.
-- **Container host**: same as the games above — `Dockerfile` builds the bundle
-  and serves it with nginx.
+Every branch's `Dockerfile` listens on `$PORT`, so any container platform works
+with zero extra config: `git switch hangman && fly launch --now`, Cloud Run,
+Railway (Docker or the committed `Procfile`), etc.
 
 ---
 
@@ -64,7 +60,7 @@ Any one of:
 git switch hangman     && docker run --rm -p 7681:7681 $(docker build -q .)   # localhost:7681
 git switch sudoku      && docker run --rm -p 8000:8000 $(docker build -q .)   # localhost:8000
 git switch 25wol       && docker run --rm -p 3000:3000 $(docker build -q .)   # localhost:3000
-git switch alagulimane && docker run --rm -p 8080:80   $(docker build -q .)   # localhost:8080
+git switch alagulimane && docker run --rm -p 8080:8080 $(docker build -q .)   # localhost:8080
 ```
 
 ## Notes

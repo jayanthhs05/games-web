@@ -1,0 +1,35 @@
+# Render Blueprint — deploys the four server games in one shot.
+#
+#   render.com  →  New  →  Blueprint  →  pick this repo  →  Apply
+#
+# Each service builds the Dockerfile at the root of its own branch. Free
+# instances sleep after ~15 min idle and cold-start on the next request.
+#
+# Alagulimane is not here — it is a static site, so GitHub Pages is easier
+# for it (repo Settings → Pages → Source: GitHub Actions). To host it on
+# Render too, add a fifth service with `branch: alagulimane`.
+
+services:
+  - type: web
+    name: hangman
+    runtime: docker
+    branch: hangman
+    plan: free
+
+  - type: web
+    name: wordle
+    runtime: docker
+    branch: wordle
+    plan: free
+
+  - type: web
+    name: sudoku
+    runtime: docker
+    branch: sudoku
+    plan: free
+
+  - type: web
+    name: words-or-less
+    runtime: docker
+    branch: "25wol"
+    plan: free
