@@ -7,5 +7,8 @@ RUN chmod +x gradlew && ./gradlew --no-daemon wasmJsBrowserDistribution
 # ---- serve the static site ----
 FROM nginx:1.27-alpine
 COPY --from=build /src/build/dist/wasmJs/productionExecutable /usr/share/nginx/html
-COPY nginx.conf /etc/nginx/conf.d/default.conf
-EXPOSE 80
+# nginx:alpine expands *.template with envsubst at startup, so the port is
+# whatever the host injects (Render, Cloud Run, ...) and 8080 locally.
+COPY nginx.conf.template /etc/nginx/templates/default.conf.template
+ENV PORT=8080
+EXPOSE 8080

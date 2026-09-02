@@ -1,17 +1,14 @@
 server {
-    listen       80;
+    listen       ${PORT};
     server_name  _;
     root   /usr/share/nginx/html;
     index  index.html;
 
-    # Kotlin/Wasm + Skia ship large .wasm/.js assets — compress and cache them.
+    # Kotlin/Wasm + Skia ship large .wasm/.js assets — compress them.
+    # (nginx's bundled mime.types already maps .wasm -> application/wasm.)
     gzip            on;
     gzip_types      application/javascript application/wasm text/css image/svg+xml;
     gzip_min_length 1024;
-
-    types {
-        application/wasm wasm;
-    }
 
     location / {
         try_files $uri $uri/ /index.html;

@@ -29,11 +29,13 @@ static host (Netlify, GitHub Pages, Cloudflare Pages, S3, ...).
 
 ```bash
 docker build -t alagulimane-web .
-docker run --rm -p 8080:80 alagulimane-web     # http://localhost:8080
+docker run --rm -p 8080:8080 alagulimane-web    # http://localhost:8080
 ```
 
 The image is multi-stage: it builds the wasm bundle with JDK 17, then serves the
-static output with nginx (correct `application/wasm` MIME type + gzip).
+static output with nginx (correct `application/wasm` MIME type + gzip). nginx
+listens on `$PORT` (8080 by default), so it drops straight onto Render / Cloud
+Run / Fly with no extra config.
 
 ### Deploy to GitHub Pages
 
