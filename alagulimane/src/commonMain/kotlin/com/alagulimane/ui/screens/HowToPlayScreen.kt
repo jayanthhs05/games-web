@@ -15,7 +15,7 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.Divider
+import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -180,8 +180,8 @@ private fun RuleSection(title: String, content: String) {
 
 @Composable
 private fun RuleDivider() {
-    Divider(
-        color = GoldDark.copy(alpha = 0.3f),
-        thickness = 1.dp
+    HorizontalDivider(
+        thickness = 1.dp,
+        color = GoldDark.copy(alpha = 0.3f)
     )
 }

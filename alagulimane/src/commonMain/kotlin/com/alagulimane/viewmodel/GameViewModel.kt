@@ -1,11 +1,12 @@
 package com.alagulimane.viewmodel
 
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
 import com.alagulimane.model.GameAction
 import com.alagulimane.model.GameState
 import com.alagulimane.model.Hole
 import com.alagulimane.model.Player
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.SupervisorJob
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
@@ -15,12 +16,16 @@ import kotlinx.coroutines.launch
 import kotlin.random.Random
 
 /**
- * ViewModel managing the Alagulimane game logic with animations
- * 
- * Total seeds in the game is always 70 (14 holes × 5 seeds)
+ * Holds the Alagulimane game logic and animation state.
+ *
+ * Total seeds in the game is always 70 (14 holes × 5 seeds). This was an
+ * Android `ViewModel`; on Compose Multiplatform it is a plain class that owns
+ * its own coroutine scope, created once via `remember { GameViewModel() }`.
  */
-class GameViewModel : ViewModel() {
-    
+class GameViewModel {
+
+    private val viewModelScope = CoroutineScope(SupervisorJob() + Dispatchers.Main)
+
     private val _gameState = MutableStateFlow(GameState())
     val gameState: StateFlow<GameState> = _gameState.asStateFlow()
     

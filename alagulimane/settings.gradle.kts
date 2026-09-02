@@ -1,18 +1,30 @@
 pluginManagement {
     repositories {
-        google()
-        mavenCentral()
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+                includeGroupByRegex("org\\.jetbrains.*")
+            }
+        }
         gradlePluginPortal()
+        mavenCentral()
     }
 }
 
 dependencyResolutionManagement {
-    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
     repositories {
-        google()
+        google {
+            content {
+                includeGroupByRegex("com\\.android.*")
+                includeGroupByRegex("com\\.google.*")
+                includeGroupByRegex("androidx.*")
+                includeGroupByRegex("org\\.jetbrains.*")
+            }
+        }
         mavenCentral()
     }
 }
 
-rootProject.name = "Alagulimane"
-include(":app")
+rootProject.name = "alagulimane"

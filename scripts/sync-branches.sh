@@ -18,10 +18,10 @@ if [ -n "$(git status --porcelain)" ]; then
   exit 1
 fi
 
-# Stash the Android CI workflow before we start deleting files on branches.
-ANDROID_WF="$(mktemp)"
-git show main:scripts/android.yml > "$ANDROID_WF"
-trap 'rm -f "$ANDROID_WF"' EXIT
+# Stash the Alagulimane web-deploy workflow before we start deleting files on branches.
+ALA_WF="$(mktemp)"
+git show main:scripts/alagulimane-web.yml > "$ALA_WF"
+trap 'rm -f "$ALA_WF"' EXIT
 
 git switch main >/dev/null
 
@@ -42,7 +42,7 @@ for g in "${GAMES[@]}"; do
 
   if [ "$g" = "alagulimane" ]; then
     mkdir -p .github/workflows
-    cp "$ANDROID_WF" .github/workflows/android.yml
+    cp "$ALA_WF" .github/workflows/web.yml
   fi
   shopt -u dotglob
 

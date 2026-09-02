@@ -1,80 +1,96 @@
 # Alagulimane (ಅಳಗುಳಿಮನೆ)
 
-A traditional South Indian Mancala-style board game for Android, built with Kotlin and Jetpack Compose.
+A traditional South Indian Mancala-style board game, built with Kotlin and
+**Compose Multiplatform**. Runs in the browser as a WebAssembly app; the same
+`commonMain` UI and game logic can also target Android.
 
-![Game](https://img.shields.io/badge/Platform-Android-green)
 ![Kotlin](https://img.shields.io/badge/Language-Kotlin-purple)
-![Compose](https://img.shields.io/badge/UI-Jetpack%20Compose-blue)
+![Compose Multiplatform](https://img.shields.io/badge/UI-Compose%20Multiplatform-blue)
+![Target](https://img.shields.io/badge/Target-wasmJs-orange)
 
-## Features
+## Play on the web
 
-- 🎮 **Classic Gameplay**: Authentic Alagulimane rules with sowing, Karu (4-seed capture), and wipe mechanics
-- 🪵 **Beautiful Design**: Wood-textured board with tamarind-like seeds
-- 👥 **Two Player**: Local two-player gameplay
-- 📊 **Round System**: Multiple rounds with pauper hole mechanics
-- 🏆 **Win Detection**: Automatic game end when a player becomes a total pauper
+```bash
+./gradlew wasmJsBrowserRun -t        # dev server with hot reload → http://localhost:8080
+```
 
-## Game Rules
+Build the static site:
+
+```bash
+./gradlew wasmJsBrowserDistribution
+# output: build/dist/wasmJs/productionExecutable/
+#   index.html, alagulimane.js, *.wasm, skiko.wasm, ...
+```
+
+That folder is a self-contained static site — no server code. Upload it to any
+static host (Netlify, GitHub Pages, Cloudflare Pages, S3, ...).
+
+### Deploy with Docker (nginx)
+
+```bash
+docker build -t alagulimane-web .
+docker run --rm -p 8080:80 alagulimane-web     # http://localhost:8080
+```
+
+The image is multi-stage: it builds the wasm bundle with JDK 17, then serves the
+static output with nginx (correct `application/wasm` MIME type + gzip).
+
+### Deploy to GitHub Pages
+
+Pushing the `alagulimane` branch runs `.github/workflows/web.yml`, which builds
+`wasmJsBrowserDistribution` and publishes it to GitHub Pages.
+
+## Requirements
+
+- **JDK 17–24** (Gradle 8.14 does not run on JDK 25+). If your default `java` is
+  newer, set `org.gradle.java.home` in `gradle.properties` or export `JAVA_HOME`.
+- First build downloads the Kotlin/Wasm toolchain, Node, and Compose artifacts
+  (~600 MB) and takes a few minutes; later builds are cached.
+
+## Browser notes
+
+- The bundle is a Skia canvas (~5–8 MB gzipped on first load) — Compose draws the
+  whole UI itself, so it looks identical to the Android version.
+- Needs a current browser with WebAssembly GC (Chrome/Edge 119+, Firefox 120+,
+  Safari 18.2+).
+- The Kannada title renders if the browser has a Kannada font; otherwise it falls
+  back to tofu boxes (cosmetic only).
+
+## Project structure
+
+```
+src/
+├── commonMain/kotlin/com/alagulimane/
+│   ├── App.kt                 # root composable + screen navigation
+│   ├── model/GameState.kt     # board model, sowing/opposite-hole helpers
+│   ├── viewmodel/GameViewModel.kt   # game logic + sowing animation (owns a CoroutineScope)
+│   └── ui/
+│       ├── theme/             # colors, typography, MaterialTheme wrapper
+│       ├── components/        # Seed, GameHole, GameBoard
+│       └── screens/           # TitleScreen, GameScreen, HowToPlayScreen
+└── wasmJsMain/
+    ├── kotlin/com/alagulimane/main.kt   # ComposeViewport entry point
+    └── resources/index.html
+```
+
+## Game rules
 
 ### Setup
-- Board: Two rows of seven holes (14 total)
-- Seeds: 5 seeds per hole (70 total)
+- Board: two rows of seven holes (14 total), five seeds per hole (70 total)
 - Each player owns one row
 
 ### Gameplay
-1. **Sowing**: Pick seeds from any of your holes, drop one per hole in your direction
-2. **Continuation**: When hand is empty, pick from next hole and continue
-3. **Karu**: If any hole reaches exactly 4 seeds, the owner captures them immediately
-4. **Turn End**: Reaching an empty hole ends your turn
-5. **Capture (Wipe)**: If next hole after empty has seeds, capture those plus opposite hole
-6. **Double Empty**: If next two holes are empty, no capture - turn just ends
+1. **Sowing**: pick seeds from any of your holes, drop one per hole counter-clockwise
+2. **Continuation**: when your hand empties, pick up the next hole's seeds and continue
+3. **Karu**: a hole reaching exactly 4 seeds is captured immediately by its owner
+4. **Turn end**: reaching an empty hole ends your turn
+5. **Capture (wipe)**: if the hole after the empty one has seeds, capture those plus the opposite hole
+6. **Double empty**: two empty holes in a row — no capture, turn just ends
 
 ### Winning
 - After each round, refill holes with 5 seeds each from captured seeds
 - Holes that can't be filled become "pauper" holes (inactive)
-- Game ends when a player can't fill any holes
-
-## Building the App
-
-### Prerequisites
-- Android Studio Arctic Fox (2021.3.1) or later
-- JDK 17
-- Android SDK with API level 34
-
-### Steps
-1. Open the project in Android Studio
-2. Sync Gradle files
-3. Run on device or emulator
-
-Or build from command line (needs the Android SDK; set `ANDROID_HOME` or add a
-`local.properties` with `sdk.dir=...`):
-```bash
-./gradlew assembleDebug           # app/build/outputs/apk/debug/app-debug.apk
-./gradlew installDebug            # install onto a connected device / emulator
-./gradlew assembleRelease         # unsigned release APK
-```
-
-### CI build
-
-Pushing the `alagulimane` branch runs `.github/workflows/android.yml`, which
-builds the debug APK on GitHub's Ubuntu runners and uploads it as a build
-artifact — no local Android SDK needed. Add a signing config + secrets to turn
-that into a Play Store `bundleRelease`.
-
-## Project Structure
-
-```
-app/src/main/java/com/alagulimane/
-├── MainActivity.kt           # Entry point
-├── model/
-│   └── GameState.kt         # Game data models
-├── viewmodel/
-│   └── GameViewModel.kt     # Game logic
-└── ui/
-    ├── theme/               # Colors, typography, theme
-    ├── components/          # Seed, Hole, GameBoard
-    └── screens/             # GameScreen
-```
+- The game ends when a player can't fill any holes
 
 ## License
 

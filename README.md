@@ -3,14 +3,15 @@
 Five small games in one repository. `main` holds everything, one folder per game.
 **Each game also has its own branch** where that game sits at the repository root
 with its own deploy files — point a hosting platform straight at the branch.
+Every one of them runs in a browser.
 
 | Game | Folder | Branch | Type | Deploy with |
 |------|--------|--------|------|-------------|
-| [Hangman](hangman/) | `hangman/` | `hangman` | Python CLI | web terminal (ttyd) — Docker (Render, Railway, Fly) |
-| [Wordle](wordle/) | `wordle/` | `wordle` | Python CLI | web terminal (ttyd) — Docker (Render, Railway, Fly) |
+| [Hangman](hangman/) | `hangman/` | `hangman` | Python CLI → web terminal | Docker (Render, Railway, Fly) |
+| [Wordle](wordle/) | `wordle/` | `wordle` | Python CLI → web terminal | Docker (Render, Railway, Fly) |
 | [Sudoku](sudoku/) | `sudoku/` | `sudoku` | Flask web app | Docker / Procfile (Render, Railway, Heroku) |
 | [25 Words or Less](25wol/) | `25wol/` | `25wol` | Node + Socket.IO web app | Docker / Procfile (Render, Railway, Heroku) |
-| [Alagulimane](alagulimane/) | `alagulimane/` | `alagulimane` | Android (Kotlin / Compose) | `./gradlew assembleDebug` / GitHub Actions |
+| [Alagulimane](alagulimane/) | `alagulimane/` | `alagulimane` | Compose Multiplatform → WebAssembly | static site / Docker (nginx) / GitHub Pages |
 
 Every folder has its own `README.md` with exact run and deploy steps.
 
@@ -22,7 +23,7 @@ games/
 ├── wordle/        wordle.py, words.txt, requirements.txt, play.sh, Dockerfile (ttyd web terminal)
 ├── sudoku/        app.py, templates/, requirements.txt, Procfile, Dockerfile
 ├── 25wol/         server.js, public/, package.json, Procfile, Dockerfile
-└── alagulimane/   Gradle Android project (Kotlin + Jetpack Compose)
+└── alagulimane/   Compose Multiplatform (wasmJs) — src/commonMain + src/wasmJsMain, Dockerfile (nginx)
 ```
 
 ## Working with the branches

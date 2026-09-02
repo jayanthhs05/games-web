@@ -137,8 +137,9 @@ fun SeedCluster(
                     val angle = (i * 360f / seedCount) + random.nextFloat() * 20f
                     val r = if (i < seedCount / 2) spreadRadius * 0.5f else spreadRadius
                     val jitter = random.nextFloat() * 4f - 2f
-                    val x = (r * kotlin.math.cos(Math.toRadians(angle.toDouble()))).toFloat() + jitter
-                    val y = (r * kotlin.math.sin(Math.toRadians(angle.toDouble()))).toFloat() + jitter
+                    val radians = angle.toDouble() * kotlin.math.PI / 180.0
+                    val x = (r * kotlin.math.cos(radians)).toFloat() + jitter
+                    val y = (r * kotlin.math.sin(radians)).toFloat() + jitter
                     Pair(x, y)
                 }
             }
