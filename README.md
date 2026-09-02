@@ -1,41 +1,40 @@
-# games
+# Hangman (CLI)
 
-Five small games in one repository. `main` holds everything, one folder per game.
-**Each game also has its own branch** where that game sits at the repository root
-with its own deploy files — point a hosting platform straight at the branch.
-Every one of them runs in a browser.
+Terminal hangman. Guess the word letter by letter across 1–5 rounds and three
+difficulty levels. Pure Python standard library — no dependencies.
 
-| Game | Folder | Branch | Type | Deploy with |
-|------|--------|--------|------|-------------|
-| [Hangman](hangman/) | `hangman/` | `hangman` | Python CLI → web terminal | Docker (Render, Railway, Fly) |
-| [Wordle](wordle/) | `wordle/` | `wordle` | Python CLI → web terminal | Docker (Render, Railway, Fly) |
-| [Sudoku](sudoku/) | `sudoku/` | `sudoku` | Flask web app | Docker / Procfile (Render, Railway, Heroku) |
-| [25 Words or Less](25wol/) | `25wol/` | `25wol` | Node + Socket.IO web app | Docker / Procfile (Render, Railway, Heroku) |
-| [Alagulimane](alagulimane/) | `alagulimane/` | `alagulimane` | Compose Multiplatform → WebAssembly | static site / Docker (nginx) / GitHub Pages |
-
-Every folder has its own `README.md` with exact run and deploy steps.
-
-## Layout
-
-```
-games/
-├── hangman/       hangman.py, words.txt, play.sh, Dockerfile (ttyd web terminal)
-├── wordle/        wordle.py, words.txt, requirements.txt, play.sh, Dockerfile (ttyd web terminal)
-├── sudoku/        app.py, templates/, requirements.txt, Procfile, Dockerfile
-├── 25wol/         server.js, public/, package.json, Procfile, Dockerfile
-└── alagulimane/   Compose Multiplatform (wasmJs) — src/commonMain + src/wasmJsMain, Dockerfile (nginx)
-```
-
-## Working with the branches
+## Run locally
 
 ```bash
-git switch sudoku          # that game, at the repo root, ready to deploy
-git switch main            # back to the full monorepo
+cd hangman
+python3 hangman.py
 ```
 
-The game branches are derived from `main`. When you change a game on `main`,
-re-sync its branch:
+Run it from inside this directory so it can find `words.txt`.
+
+## Play in a browser (web terminal)
+
+The `Dockerfile` serves the real terminal over the web with
+[`ttyd`](https://github.com/tsl0922/ttyd) + xterm.js. The game code is unchanged;
+`play.sh` just restarts it after each session.
 
 ```bash
-./scripts/sync-branches.sh   # rebuilds every game branch from main
+cd hangman
+docker build -t hangman-web .
+docker run --rm -p 7681:7681 hangman-web
+# open http://localhost:7681
 ```
+
+### Deploy it online
+
+Any host that runs a container and gives you `$PORT` works — Render, Railway,
+Fly.io. Create a "Docker" / "Web Service", point it at the `hangman` branch,
+no build or start command needed.
+
+- Each browser tab gets its own isolated process — players don't collide.
+- `ttyd` only ever runs `./play.sh` (never a shell); the container runs as a
+  non-root user. `-m 25` caps concurrent players.
+- To gate access, add `-c user:pass` to the `ttyd` line in the `Dockerfile`, or
+  use the platform's auth.
+- Building on an ARM machine: `docker build --build-arg TTYD_ARCH=aarch64 ...`
+  (deploy builders are almost always x86_64).
