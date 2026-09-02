@@ -1,41 +1,43 @@
-# games
+# Sudoku (Flask web app)
 
-Five small games in one repository. `main` holds everything, one folder per game.
-**Each game also has its own branch** where that game sits at the repository root
-with its own deploy files — point a hosting platform straight at the branch.
-Every one of them runs in a browser.
+Generates a Sudoku puzzle, lets you fill the blanks in the browser, and checks
+your solution on submit.
 
-| Game | Folder | Branch | Type | Deploy with |
-|------|--------|--------|------|-------------|
-| [Hangman](hangman/) | `hangman/` | `hangman` | Python CLI → web terminal | Docker (Render, Railway, Fly) |
-| [Wordle](wordle/) | `wordle/` | `wordle` | Python CLI → web terminal | Docker (Render, Railway, Fly) |
-| [Sudoku](sudoku/) | `sudoku/` | `sudoku` | Flask web app | Docker / Procfile (Render, Railway, Heroku) |
-| [25 Words or Less](25wol/) | `25wol/` | `25wol` | Node + Socket.IO web app | Docker / Procfile (Render, Railway, Heroku) |
-| [Alagulimane](alagulimane/) | `alagulimane/` | `alagulimane` | Compose Multiplatform → WebAssembly | static site / Docker (nginx) / GitHub Pages |
-
-Every folder has its own `README.md` with exact run and deploy steps.
-
-## Layout
-
-```
-games/
-├── hangman/       hangman.py, words.txt, play.sh, Dockerfile (ttyd web terminal)
-├── wordle/        wordle.py, words.txt, requirements.txt, play.sh, Dockerfile (ttyd web terminal)
-├── sudoku/        app.py, templates/, requirements.txt, Procfile, Dockerfile
-├── 25wol/         server.js, public/, package.json, Procfile, Dockerfile
-└── alagulimane/   Compose Multiplatform (wasmJs) — src/commonMain + src/wasmJsMain, Dockerfile (nginx)
-```
-
-## Working with the branches
+## Run locally
 
 ```bash
-git switch sudoku          # that game, at the repo root, ready to deploy
-git switch main            # back to the full monorepo
+cd sudoku
+python3 -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python3 app.py            # dev server on http://localhost:5000
 ```
 
-The game branches are derived from `main`. When you change a game on `main`,
-re-sync its branch:
+Set `FLASK_DEBUG=1` for auto-reload. `PORT` overrides the port.
+
+## Run with gunicorn (production)
 
 ```bash
-./scripts/sync-branches.sh   # rebuilds every game branch from main
+gunicorn app:app --bind 0.0.0.0:8000
 ```
+
+## Run with Docker
+
+```bash
+cd sudoku
+docker build -t sudoku .
+docker run --rm -p 8000:8000 sudoku      # http://localhost:8000
+```
+
+## Deploy to a PaaS
+
+The `Procfile` works on Heroku / Railway / Render (Python buildpack):
+
+```
+web: gunicorn app:app --bind 0.0.0.0:$PORT
+```
+
+- **Render / Railway:** point at the `sudoku` branch (app at repo root) or set the
+  root directory to `sudoku/`. Build: `pip install -r requirements.txt`.
+  Start: `gunicorn app:app --bind 0.0.0.0:$PORT`.
+- Puzzle state is kept in `app.config` (single worker). For multiple workers,
+  move state to a session or a store.
