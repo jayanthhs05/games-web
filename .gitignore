@@ -1,34 +1,12 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
-venv/
-env/
-
-# Node
-node_modules/
-npm-debug.log*
-yarn-error.log*
-
-# Android / Gradle
 .gradle/
-**/build/
+build/
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
 local.properties
-*.apk
-*.aab
-*.keystore
-!debug.keystore
-.cxx/
-captures/
-
-# IDE / editor
+.kotlin/
+node_modules/
 .idea/
-.vscode/
 *.iml
 .DS_Store
-Thumbs.db
 
-# Env
-.env
-*.log
+# kotlin-js-store/ (yarn.lock) is intentionally committed for reproducible builds
