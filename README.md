@@ -6,8 +6,8 @@ with its own deploy files — point a hosting platform straight at the branch.
 
 | Game | Folder | Branch | Type | Deploy with |
 |------|--------|--------|------|-------------|
-| [Hangman](hangman/) | `hangman/` | `hangman` | Python CLI | run locally / Docker |
-| [Wordle](wordle/) | `wordle/` | `wordle` | Python CLI | run locally / Docker |
+| [Hangman](hangman/) | `hangman/` | `hangman` | Python CLI | web terminal (ttyd) — Docker (Render, Railway, Fly) |
+| [Wordle](wordle/) | `wordle/` | `wordle` | Python CLI | web terminal (ttyd) — Docker (Render, Railway, Fly) |
 | [Sudoku](sudoku/) | `sudoku/` | `sudoku` | Flask web app | Docker / Procfile (Render, Railway, Heroku) |
 | [25 Words or Less](25wol/) | `25wol/` | `25wol` | Node + Socket.IO web app | Docker / Procfile (Render, Railway, Heroku) |
 | [Alagulimane](alagulimane/) | `alagulimane/` | `alagulimane` | Android (Kotlin / Compose) | `./gradlew assembleDebug` / GitHub Actions |
@@ -18,8 +18,8 @@ Every folder has its own `README.md` with exact run and deploy steps.
 
 ```
 games/
-├── hangman/       hangman.py, words.txt, Dockerfile
-├── wordle/        wordle.py, words.txt, requirements.txt, Dockerfile
+├── hangman/       hangman.py, words.txt, play.sh, Dockerfile (ttyd web terminal)
+├── wordle/        wordle.py, words.txt, requirements.txt, play.sh, Dockerfile (ttyd web terminal)
 ├── sudoku/        app.py, templates/, requirements.txt, Procfile, Dockerfile
 ├── 25wol/         server.js, public/, package.json, Procfile, Dockerfile
 └── alagulimane/   Gradle Android project (Kotlin + Jetpack Compose)
