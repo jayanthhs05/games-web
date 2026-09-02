@@ -1,34 +1,12 @@
-# Python
-__pycache__/
-*.py[cod]
-*.egg-info/
-.venv/
-venv/
-env/
-
-# Node
+# Dependencies
 node_modules/
-npm-debug.log*
-yarn-error.log*
 
-# Android / Gradle
-.gradle/
-**/build/
-local.properties
-*.apk
-*.aab
-*.keystore
-!debug.keystore
-.cxx/
-captures/
+# Logs
+*.log
 
-# IDE / editor
-.idea/
-.vscode/
-*.iml
+# OS files
 .DS_Store
 Thumbs.db
 
-# Env
+# Environment
 .env
-*.log

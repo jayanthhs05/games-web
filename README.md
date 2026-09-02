@@ -1,41 +1,34 @@
-# games
+# 25 Words or Less (real-time web game)
 
-Five small games in one repository. `main` holds everything, one folder per game.
-**Each game also has its own branch** where that game sits at the repository root
-with its own deploy files — point a hosting platform straight at the branch.
-Every one of them runs in a browser.
+Two-player co-op word game. One player gives one-word clues, the other guesses,
+against a shared timer and clue budget. Node + Express + Socket.IO. Full rules in
+[`rules.md`](rules.md).
 
-| Game | Folder | Branch | Type | Deploy with |
-|------|--------|--------|------|-------------|
-| [Hangman](hangman/) | `hangman/` | `hangman` | Python CLI → web terminal | Docker (Render, Railway, Fly) |
-| [Wordle](wordle/) | `wordle/` | `wordle` | Python CLI → web terminal | Docker (Render, Railway, Fly) |
-| [Sudoku](sudoku/) | `sudoku/` | `sudoku` | Flask web app | Docker / Procfile (Render, Railway, Heroku) |
-| [25 Words or Less](25wol/) | `25wol/` | `25wol` | Node + Socket.IO web app | Docker / Procfile (Render, Railway, Heroku) |
-| [Alagulimane](alagulimane/) | `alagulimane/` | `alagulimane` | Compose Multiplatform → WebAssembly | static site / Docker (nginx) / GitHub Pages |
-
-Every folder has its own `README.md` with exact run and deploy steps.
-
-## Layout
-
-```
-games/
-├── hangman/       hangman.py, words.txt, play.sh, Dockerfile (ttyd web terminal)
-├── wordle/        wordle.py, words.txt, requirements.txt, play.sh, Dockerfile (ttyd web terminal)
-├── sudoku/        app.py, templates/, requirements.txt, Procfile, Dockerfile
-├── 25wol/         server.js, public/, package.json, Procfile, Dockerfile
-└── alagulimane/   Compose Multiplatform (wasmJs) — src/commonMain + src/wasmJsMain, Dockerfile (nginx)
-```
-
-## Working with the branches
+## Run locally
 
 ```bash
-git switch sudoku          # that game, at the repo root, ready to deploy
-git switch main            # back to the full monorepo
+cd 25wol
+npm install
+npm start                 # http://localhost:3000
 ```
 
-The game branches are derived from `main`. When you change a game on `main`,
-re-sync its branch:
+`PORT` overrides the port. Open the URL in two tabs / devices, create a game in
+one and join with the 6-character Game ID in the other.
+
+## Run with Docker
 
 ```bash
-./scripts/sync-branches.sh   # rebuilds every game branch from main
+cd 25wol
+docker build -t 25wol .
+docker run --rm -p 3000:3000 25wol
 ```
+
+## Deploy to a PaaS
+
+`Procfile` (`web: node server.js`) works on Heroku / Railway / Render (Node
+buildpack). Point the service at the `25wol` branch (app at repo root) or set the
+root directory to `25wol/`.
+
+- Needs WebSocket support (all of the above provide it).
+- Game state lives in memory in a single process — run **one** instance / no
+  autoscaling, or move state to Redis for multiple instances.

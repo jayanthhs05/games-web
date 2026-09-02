@@ -1,0 +1,161 @@
+{
+  "version": "9",
+  "items": {
+    "86e1576572c98ffdf8e3ed81b7adba4b": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-wasm-js/2.4.10/793ecd16bdf7836dc41a540a6b0fd72a81e53aba/kotlin-stdlib-wasm-js-2.4.10.klib"
+    },
+    "6bd2c276f167c67160c7f5d45ceb184f": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.runtime/runtime-wasm-js/1.12.0/869675145b6351d07a3648e40f2f150a75bfe92f/runtime-wasm-js-1.12.0.klib"
+    },
+    "b6bf969decbae6a06a11df4d94e19fae": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-wasm-js/1.12.0/18e093049c01d67c257074149bd1096f2b39872d/runtime-wasm-js-1.12.0.klib"
+    },
+    "e7fe253c9ce0fbcaa7d5d4d840b0faa5": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-annotation-wasm-js/1.12.0/3849f0eaa3f77c4f13ee1f830596a44bf2fd19c7/runtime-annotation-wasm-js-1.12.0.klib"
+    },
+    "2e18ac556574246ec112304cceacf844": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-coroutines-core-wasm-js/1.11.0/821648fe380015ce91050d23afe28c990d670d87/kotlinx-coroutines-core-wasm-js-1.11.0.klib"
+    },
+    "4fcafebeb7e9a97052642ca9027b0fbb": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.kotlinx/atomicfu-wasm-js/0.32.1/6cffbc16855eb9849d414a691b71680d70dbb419/atomicfu-wasm-js-0.32.1.klib"
+    },
+    "234fb7b59288841b187a482e3e5a3bc3": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-browser-wasm-js/0.5.0/4b9c6e6a72df07e2f1d605c9f87c4e5176ddeb93/kotlinx-browser-wasm-js-0.5.0.klib"
+    },
+    "4f3e4b9f82d35329a3f7939f4f12c76a": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.collection/collection-wasm-js/1.5.0/18144cbf664890f9b0dd371eb44e5bdadbf000a7/collection-wasm-js-1.5.0.klib"
+    },
+    "e7b08164ecada67c6bbc881d17cabaf8": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.annotation/annotation-wasm-js/1.9.1/c084814826e28c73c203da1a2f36f71662804bd3/annotation-wasm-js-1.9.1.klib"
+    },
+    "8468daec9f55ac7fe63bfc0b345ee99d": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.foundation/foundation-wasm-js/1.12.0/8ce0caac7df20713cdeb3aa8f1e60ea5a707cbfa/foundation-wasm-js-1.12.0.klib"
+    },
+    "8751edd42e45551a7ef4f521cd42a04c": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.animation/animation-wasm-js/1.12.0/3828129ca6266fee3fbb67a98f1733d2180cf35b/animation-wasm-js-1.12.0.klib"
+    },
+    "1f090e313006e36a8981a7681db053e0": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.animation/animation-core-wasm-js/1.12.0/6d0fafd66d54bfdf8b6802ce66ce95dcdf88a985/animation-core-wasm-js-1.12.0.klib"
+    },
+    "0336945e83d4bb47c5fb5c8d66555794": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-unit-wasm-js/1.12.0/7603b0c0ea2b5e1a94ff6fc7dee0cacfe4d0c52/ui-unit-wasm-js-1.12.0.klib"
+    },
+    "849bb32ea666b5dea79f4fadcd864bec": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-geometry-wasm-js/1.12.0/d5bcebe1e633006ebd286b02342b1a185bc9f71d/ui-geometry-wasm-js-1.12.0.klib"
+    },
+    "92adbb17c33e250c8c754b21a73a94b9": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-util-wasm-js/1.12.0/e6da26d2e49293c78e5305607e0bfe57233b1646/ui-util-wasm-js-1.12.0.klib"
+    },
+    "a349df77f86deb53ef1d45f86955ef79": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.collection-internal/collection-wasm-js/1.10.0/20428c98f45e34bc64d7f85b68e6e1241df8436e/collection-wasm-js-1.10.0.klib"
+    },
+    "d658348ff88fca31d4902ace8e3be2fc": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.annotation-internal/annotation-wasm-js/1.10.0/32f0683bc09170292b5a034f535d9af10c687f17/annotation-wasm-js-1.10.0.klib"
+    },
+    "efd9e75d4cbda8923344ff832c56d936": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-graphics-wasm-js/1.12.0/31d6f48e3b526938c2bdc959820b30aeac50835a/ui-graphics-wasm-js-1.12.0.klib"
+    },
+    "736c7455a3d310880992ab72721339b3": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-wasm-js/0.150.1/96d879685fc0cdfc129388571ffbaca5e436b0a7/skiko-wasm-js-0.150.1.klib",
+      "target": "skiko-wasm-js/0.150.1"
+    },
+    "4e1700aefcc17ad7c97227be231f5113": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.skiko/skiko-js-wasm-runtime/0.150.1/a18b9fe90d1cac41b384b303d147bed4fe61a760/skiko-js-wasm-runtime-0.150.1.jar",
+      "target": "skiko-js-wasm-runtime/0.150.1"
+    },
+    "668687cc0c3cd2d9bbc14b06800105a3": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-wasm-js/1.12.0/edc3faf82de2abcaa07cc7041511d4c075deb4da/ui-wasm-js-1.12.0.klib"
+    },
+    "409706d64921e865872cc8206baf8bde": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-backhandler-wasm-js/1.12.0/c34d1cc1c837f20bf447a5b96f3a631565dd37d1/ui-backhandler-wasm-js-1.12.0.klib"
+    },
+    "1a97a45b31fabf6968ff93ac701b51a1": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.androidx.navigationevent/navigationevent-compose-wasm-js/1.1.0/8675e605cd54d365d3c062bb33057cc6d06b2f7c/navigationevent-compose-wasm-js-1.1.0.klib"
+    },
+    "c82f561706d4925a7f4aa8b4876bce4e": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.navigationevent/navigationevent-compose-wasm-js/1.1.1/ec10ba51d1b68564d446d31038c916fa2e286aa9/navigationevent-compose-wasm-js-1.1.1.klib"
+    },
+    "477f2f1524e03977767ff1e2a36ccbb5": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.navigationevent/navigationevent-wasm-js/1.1.1/1ea7b0b21fe569b0b050dee9849804ec84bb26a1/navigationevent-wasm-js-1.1.1.klib"
+    },
+    "a19050f6c7641719507beb3cdf94b686": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.ui/ui-text-wasm-js/1.12.0/70f0eccdb770981cddf877a8a232524e8a7676a/ui-text-wasm-js-1.12.0.klib"
+    },
+    "f0af792e7def178b10491a78880ca7ac": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.runtime/runtime-saveable-wasm-js/1.12.0/7f9a6391ccee72ba77394730498ff83d36d1ca66/runtime-saveable-wasm-js-1.12.0.klib"
+    },
+    "79ca22d070569908a1a5dab70e4f47f7": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.androidx.lifecycle/lifecycle-runtime-compose-wasm-js/2.9.6/6b22b30a8b55d0f498e78dc604cd814a13483fcc/lifecycle-runtime-compose-wasm-js-2.9.6.klib"
+    },
+    "bac68e1fced0fdc6dcdfd3bc447005be": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.androidx.lifecycle/lifecycle-runtime-wasm-js/2.9.6/71757c5e7be8c99246fabe7e4c9d7becad254377/lifecycle-runtime-wasm-js-2.9.6.klib"
+    },
+    "5188c709258a638f1dd2bb5e6482f845": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-runtime-wasm-js/2.11.0/422a58b540fa019746919200247590e0e8c71479/lifecycle-runtime-wasm-js-2.11.0.klib"
+    },
+    "c2e52d587af4d227ab095263d4d94f7b": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-common-wasm-js/2.11.0/1c9a8869b9079bcbbf69f1e393e2e25f5944f8d5/lifecycle-common-wasm-js-2.11.0.klib"
+    },
+    "a35fd515f6b002a3af49351eab89ad2f": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.androidx.lifecycle/lifecycle-common-wasm-js/2.9.6/5d9d99de66ae8a0d6b1ecd1daf9c88627723755a/lifecycle-common-wasm-js-2.9.6.klib"
+    },
+    "66bb41750f3a2f1ff0955c59a24941fa": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-runtime-compose-wasm-js/2.11.0/6c7e47468ffe0b39e90185d0d974e167eedd0d7/lifecycle-runtime-compose-wasm-js-2.11.0.klib"
+    },
+    "43a8531d1e5ad8eb442508286d948a31": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.androidx.savedstate/savedstate-compose-wasm-js/1.3.6/531312550e888c492c0398ab76a73f925b3701be/savedstate-compose-wasm-js-1.3.6.klib"
+    },
+    "bee455c08dcf411e7ceaa72911f3011b": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.savedstate/savedstate-compose-wasm-js/1.4.0/a613faf31aaf91d5928780a562aca7f7c0366848/savedstate-compose-wasm-js-1.4.0.klib"
+    },
+    "0389bd287f15ed4cf8ece0f686769438": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.savedstate/savedstate-wasm-js/1.4.0/6865c0523c212a87a34c7df4f8f87596e2fdfcc8/savedstate-wasm-js-1.4.0.klib"
+    },
+    "435e9ef51b2b14ead28ac39aeaee942e": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-serialization-core-wasm-js/1.7.3/1badfeaf1bb965ae884394fced75656e42ed98a1/kotlinx-serialization-core-wasm-js-1.7.3.klib"
+    },
+    "1eaab65a72ea0598d6a8891a2178cc8c": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.androidx.savedstate/savedstate-wasm-js/1.3.6/e0cb2589ac0819582639d17e6638fd3d8c185419/savedstate-wasm-js-1.3.6.klib"
+    },
+    "948f36306f45a881ed5e5364b033bb4c": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-saveable-wasm-js/1.12.0/1d1e49ecae690268c4f687526773c1f629817de/runtime-saveable-wasm-js-1.12.0.klib"
+    },
+    "4249f829bd0b59bbd59365a70a39f353": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel-savedstate-wasm-js/2.9.6/bf81e4004eb3404652e9ff5b3fb8518aa6cec571/lifecycle-viewmodel-savedstate-wasm-js-2.9.6.klib"
+    },
+    "253d0f84d6a3c68278d689a262055573": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.androidx.lifecycle/lifecycle-viewmodel-wasm-js/2.9.6/e91d9920cc1b6f9c79a4646033e1df81e5e453fe/lifecycle-viewmodel-wasm-js-2.9.6.klib"
+    },
+    "f772b448ed007fbeea2939da88980422": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-viewmodel-wasm-js/2.11.0/c55954f93ee10d5564d1c0f13eacddc7feb081e3/lifecycle-viewmodel-wasm-js-2.11.0.klib"
+    },
+    "ac08677300c799bacc7d2bc680aa947e": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-viewmodel-savedstate-wasm-js/2.11.0/fe51d4e90d511afd3863ac734fa04b5521ea8aa3/lifecycle-viewmodel-savedstate-wasm-js-2.11.0.klib"
+    },
+    "50a95050c143d4acbd6156b0845a7352": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.lifecycle/lifecycle-viewmodel-compose-wasm-js/2.11.0/f741ba99055008a29c044655f52ff6e1c6582257/lifecycle-viewmodel-compose-wasm-js-2.11.0.klib"
+    },
+    "485e3b3096a7c2635d3d9ffad50c0bac": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/androidx.compose.runtime/runtime-retain-wasm-js/1.12.0/a0dda7850e9de49d9c7a8ceb2bfb83fd4628768c/runtime-retain-wasm-js-1.12.0.klib"
+    },
+    "db69ea8aed4feb0a0b9665b5937bbca4": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.foundation/foundation-layout-wasm-js/1.12.0/f0a3abade578b5f7801c466e8de5c4ddeb6300f/foundation-layout-wasm-js-1.12.0.klib"
+    },
+    "23511291032172ba4f5085a7352a672b": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.material3/material3-wasm-js/1.9.0/84302b5c5117b0a9e81b392a09cbbb1bd05a307f/material3-wasm-js-1.9.0.klib"
+    },
+    "672b5f323d40e6d8ed2b63215a84321b": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-ripple-wasm-js/1.9.1/9654de0110653087be7c2f9356fb103f5c24c07f/material-ripple-wasm-js-1.9.1.klib"
+    },
+    "065392cf12e1187c3f5da05fd99e2332": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.kotlinx/kotlinx-datetime-wasm-js/0.7.1/8e6767e480f8fd07577d695bb0e39df08503e79e/kotlinx-datetime-wasm-js-0.7.1.klib",
+      "target": "Kotlin-DateTime-library-kotlinx-datetime-wasm-js/0.7.1"
+    },
+    "4cbe3ddd12000b04c38d65166243ab25": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-icons-extended-wasm-js/1.7.3/d01db77e4295c019018ccc83b56933703c040dd9/material-icons-extended-wasm-js-1.7.3.klib"
+    },
+    "c1419ee1b9237fdda2264c63592ac388": {
+      "src": "/tmp/claude-1000/-home-hsjayanth-Desktop/398b1edb-2bcf-4615-a2fc-fedc06ce4f45/scratchpad/gradle-home/caches/modules-2/files-2.1/org.jetbrains.compose.material/material-icons-core-wasm-js/1.7.3/d896523c87aa91d43c749541e6623ec78b1a4555/material-icons-core-wasm-js-1.7.3.klib"
+    }
+  }
+}
