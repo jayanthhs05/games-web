@@ -2,4 +2,9 @@
 *.swp
 .idea/
 .vscode/
+
+# stray build tooling (main holds no code)
+.gradle/
+.kotlin/
 build/
+node_modules/
