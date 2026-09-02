@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <style>
+        .btn{
+            margin: 10px 10px 10px 0px;
+            padding: 5px;
+            font-size: 15px;
+        }
+        table {
+            border-collapse: collapse;
+        }
+        td {
+            width: 40px;
+            height: 40px;
+            padding: 0px;
+            margin: 0px;
+            text-align: center;
+            border: 1px solid black;
+        }
+        td[id^="in"] {
+            font-weight: bold;
+        }
+        tr[class^="border-top"] {
+            border-top: 5px solid black;
+        }
+        td[class^="border-left"] {
+            border-left: 5px solid black;
+        }
+        tr[class^="border-bottom"] {
+            border-bottom: 5px solid black;
+        }
+        td[class^="border-right"] {
+            border-right: 5px solid black;
+        }
+
+        .gridbox{
+            width: 40px;
+            height: 40px;
+            margin: 0px;
+            padding: 0px;
+            text-align: center;
+        }
+        .known{
+            width: 40px;
+            height: 40px;
+            margin: 0px;
+            padding: 0px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        body{
+            font-family: 'Roboto';
+            font-size: 15px;
+        }
+    </style>
+    <title>SUDOKU</title>
+</head>
+<body>
+    <h1>SUDOKU</h1>
+    <form action = "/submit" method="post">
+        <table>
+            {% for i in range(9) %}
+                {% if i % 3 == 0 %}
+                    <tr class="border-top">
+                        {% for j in range(9) %}
+                            {% if j % 3 == 0 %}
+                                <td class="border-left">
+                                    {% if grid[i][j] == 0 %}
+                                        <input class = "gridbox" name = "in{{ i }}{{ j }}">
+                                    {% else %}
+                                        <p class = "known">
+                                            {{grid[i][j]}}
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            {% elif j == 8 %}
+                                <td class="border-right">
+                                    {% if grid[i][j] == 0 %}
+                                        <input class = "gridbox" name = "in{{ i }}{{ j }}">
+                                    {% else %}
+                                        <p class = "known">
+                                            {{grid[i][j]}}
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            {% else %}
+                                <td>
+                                    {% if grid[i][j] == 0 %}
+                                        <input class = "gridbox" name = "in{{ i }}{{ j }}">
+                                    {% else %}
+                                        <p class = "known">
+                                            {{grid[i][j]}}
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                    {% endfor %}
+                    </tr>
+                {% elif i == 8 %}
+                    <tr class="border-bottom">
+                        {% for j in range(9) %}
+                            {% if j % 3 == 0 %}
+                                <td class="border-left">
+                                    {% if grid[i][j] == 0 %}
+                                        <input class = "gridbox" name = "in{{ i }}{{ j }}">
+                                    {% else %}
+                                        <p class = "known">
+                                            {{grid[i][j]}}
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            {% elif j == 8 %}
+                                <td class="border-right">
+                                    {% if grid[i][j] == 0 %}
+                                        <input class = "gridbox" name = "in{{ i }}{{ j }}">
+                                    {% else %}
+                                        <p class = "known">
+                                            {{grid[i][j]}}
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            {% else %}
+                                <td>
+                                    {% if grid[i][j] == 0 %}
+                                        <input class = "gridbox" name = "in{{ i }}{{ j }}">
+                                    {% else %}
+                                        <p class = "known">
+                                            {{grid[i][j]}}
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% else %}
+                    <tr>
+                        {% for j in range(9) %}
+                            {% if j % 3 == 0 %}
+                                <td class="border-left">
+                                    {% if grid[i][j] == 0 %}
+                                        <input class = "gridbox" name = "in{{ i }}{{ j }}">
+                                    {% else %}
+                                        <p class = "known">
+                                            {{grid[i][j]}}
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            {% elif j == 8 %}
+                                <td class="border-right">
+                                    {% if grid[i][j] == 0 %}
+                                        <input class = "gridbox" name = "in{{ i }}{{ j }}">
+                                    {% else %}
+                                        <p class = "known">
+                                            {{grid[i][j]}}
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            {% else %}
+                                <td>
+                                    {% if grid[i][j] == 0 %}
+                                        <input class = "gridbox" name = "in{{ i }}{{ j }}">
+                                    {% else %}
+                                        <p class = "known">
+                                            {{grid[i][j]}}
+                                        </p>
+                                    {% endif %}
+                                </td>
+                            {% endif %}
+                        {% endfor %}
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </table>
+        <div>
+            <button type="submit" class = "btn">Submit</button>
+        </div>
+    </form>
+</body>
+</html>
+                                    

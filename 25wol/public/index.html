@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>25 Words or Less</title>
+    <meta name="description" content="A real-time two-player cooperative word-guessing game">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- SVG Icons (hidden, referenced by use) -->
+    <svg style="display: none;">
+        <symbol id="icon-user" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+        </symbol>
+        <symbol id="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+        </symbol>
+        <symbol id="icon-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <polyline points="12 6 12 12 16 14"/>
+        </symbol>
+        <symbol id="icon-message" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+        </symbol>
+        <symbol id="icon-skip" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polygon points="5 4 15 12 5 20 5 4"/>
+            <line x1="19" y1="5" x2="19" y2="19"/>
+        </symbol>
+        <symbol id="icon-trophy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/>
+            <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/>
+            <path d="M4 22h16"/>
+            <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/>
+            <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/>
+            <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/>
+        </symbol>
+        <symbol id="icon-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="15" y1="9" x2="9" y2="15"/>
+            <line x1="9" y1="9" x2="15" y2="15"/>
+        </symbol>
+        <symbol id="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <polyline points="20 6 9 17 4 12"/>
+        </symbol>
+        <symbol id="icon-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="5" y1="12" x2="19" y2="12"/>
+            <polyline points="12 5 19 12 12 19"/>
+        </symbol>
+    </svg>
+
+    <!-- Landing Screen -->
+    <div id="landing-screen" class="screen active">
+        <div class="container">
+            <div class="logo-section">
+                <h1 class="game-title">25</h1>
+                <p class="game-subtitle">Words or Less</p>
+            </div>
+            
+            <div class="card glass">
+                <div class="tabs">
+                    <button class="tab active" data-tab="create">Create Game</button>
+                    <button class="tab" data-tab="join">Join Game</button>
+                </div>
+                
+                <div id="create-tab" class="tab-content active">
+                    <div class="params-grid">
+                        <div class="param-item">
+                            <label>Words to Guess</label>
+                            <div class="param-control">
+                                <button class="param-btn" data-param="words" data-action="decrease">−</button>
+                                <span id="words-value" class="param-value">10</span>
+                                <button class="param-btn" data-param="words" data-action="increase">+</button>
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <label>Clue Budget</label>
+                            <div class="param-control">
+                                <button class="param-btn" data-param="clues" data-action="decrease">−</button>
+                                <span id="clues-value" class="param-value">25</span>
+                                <button class="param-btn" data-param="clues" data-action="increase">+</button>
+                            </div>
+                        </div>
+                        <div class="param-item">
+                            <label>Time Limit (seconds)</label>
+                            <div class="param-control">
+                                <button class="param-btn" data-param="time" data-action="decrease">−</button>
+                                <span id="time-value" class="param-value">180</span>
+                                <button class="param-btn" data-param="time" data-action="increase">+</button>
+                            </div>
+                        </div>
+                    </div>
+                    <button id="create-btn" class="btn btn-primary">Create Game</button>
+                </div>
+                
+                <div id="join-tab" class="tab-content">
+                    <div class="input-group">
+                        <label>Game ID</label>
+                        <input type="text" id="game-id-input" placeholder="Enter 6-character code" maxlength="6" autocomplete="off">
+                    </div>
+                    <button id="join-btn" class="btn btn-secondary">Join Game</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Waiting Screen -->
+    <div id="waiting-screen" class="screen">
+        <div class="container">
+            <div class="card glass waiting-card">
+                <div class="waiting-icon">
+                    <div class="pulse-ring"></div>
+                    <svg class="icon icon-lg"><use href="#icon-user"/></svg>
+                </div>
+                <h2>Waiting for Player 2</h2>
+                <p>Share this Game ID:</p>
+                <div class="game-id-display">
+                    <span id="display-game-id">------</span>
+                    <button id="copy-id-btn" class="btn-icon" title="Copy to clipboard">
+                        <svg class="icon"><use href="#icon-copy"/></svg>
+                    </button>
+                </div>
+                <button id="start-game-btn" class="btn btn-primary" disabled>Start Game</button>
+                <p class="hint">Game will start when both players are ready</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="screen">
+        <div class="game-container">
+            <!-- Header Stats -->
+            <div class="game-header">
+                <div class="stat-item">
+                    <svg class="icon"><use href="#icon-clock"/></svg>
+                    <span id="timer-display" class="stat-value timer">3:00</span>
+                </div>
+                <div class="role-badge" id="role-badge">SPEAKER</div>
+                <div class="stat-item">
+                    <svg class="icon"><use href="#icon-message"/></svg>
+                    <span id="clues-display" class="stat-value">25</span>
+                    <span class="stat-label">clues</span>
+                </div>
+            </div>
+
+            <!-- Main Game Area -->
+            <div class="game-main">
+                <!-- Word List Panel (Speaker) -->
+                <div id="word-panel" class="panel word-panel">
+                    <h3 class="panel-title">Word List</h3>
+                    <div id="word-list" class="word-list">
+                        <!-- Words populated by JS -->
+                    </div>
+                    <button id="pass-btn" class="btn btn-warning">
+                        PASS
+                        <svg class="icon icon-sm"><use href="#icon-skip"/></svg>
+                    </button>
+                </div>
+
+                <!-- Chat/History Panel -->
+                <div class="panel chat-panel">
+                    <h3 class="panel-title">Clues & Guesses</h3>
+                    <div id="chat-history" class="chat-history">
+                        <div class="chat-placeholder">Clues and guesses will appear here...</div>
+                    </div>
+                    
+                    <!-- Speaker Input -->
+                    <div id="speaker-input" class="input-area hidden">
+                        <input type="text" id="clue-input" placeholder="Type clue words..." autocomplete="off">
+                        <button id="send-clue-btn" class="btn btn-primary">Send</button>
+                    </div>
+                    
+                    <!-- Guesser Input -->
+                    <div id="guesser-input" class="input-area hidden">
+                        <input type="text" id="guess-input" placeholder="Type your guess..." autocomplete="off">
+                        <button id="send-guess-btn" class="btn btn-accent">Guess</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Result Screen -->
+    <div id="result-screen" class="screen">
+        <div class="container">
+            <div class="card glass result-card">
+                <div id="result-icon" class="result-icon">
+                    <svg class="icon icon-xl"><use href="#icon-trophy"/></svg>
+                </div>
+                <h2 id="result-title">Victory!</h2>
+                <p id="result-message">You guessed all the words!</p>
+                
+                <div class="result-stats">
+                    <div class="result-stat">
+                        <span class="result-stat-value" id="words-guessed">10/10</span>
+                        <span class="result-stat-label">Words Guessed</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="result-stat-value" id="clues-used">15</span>
+                        <span class="result-stat-label">Clues Used</span>
+                    </div>
+                    <div class="result-stat">
+                        <span class="result-stat-value" id="time-used">2:15</span>
+                        <span class="result-stat-label">Time Used</span>
+                    </div>
+                </div>
+                
+                <div id="word-reveal" class="word-reveal">
+                    <h4>The Words Were:</h4>
+                    <div id="reveal-words" class="reveal-words"></div>
+                </div>
+                
+                <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast hidden"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="game.js"></script>
+</body>
+</html>
