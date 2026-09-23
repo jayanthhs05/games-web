@@ -39,17 +39,6 @@ function getRandomWords(count) {
     return shuffled.slice(0, count);
 }
 
-// Validate word against dictionary API
-async function validateWord(word) {
-    try {
-        const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`);
-        return response.ok;
-    } catch (error) {
-        console.error('Dictionary API error:', error);
-        return true; // Allow on API failure
-    }
-}
-
 // Socket.IO connection handling
 io.on('connection', (socket) => {
     console.log('Player connected:', socket.id);
@@ -170,7 +159,7 @@ io.on('connection', (socket) => {
     });
 
     // Speaker sends clue
-    socket.on('sendClue', async (clueText) => {
+    socket.on('sendClue', (clueText) => {
         const game = games.get(currentGameId);
         if (!game || !game.started || game.ended) return;
         if (socket.id !== game.speaker) return;
@@ -181,8 +170,11 @@ io.on('connection', (socket) => {
             .split(/\s+/)
             .filter(w => w.length > 0);
         
-        if (clueWords.length === 0) return;
-        
+        if (clueWords.length === 0) {
+            socket.emit('error', { message: 'Clue must contain at least one letter word.' });
+            return;
+        }
+
         // Check clue budget
         if (clueWords.length > game.cluesRemaining) {
             socket.emit('error', { message: `Not enough clues! You have ${game.cluesRemaining} remaining.` });
@@ -196,15 +188,6 @@ io.on('connection', (socket) => {
         if (clueWords.includes(activeWord)) {
             socket.emit('error', { message: 'Cannot use the target word as a clue!' });
             return;
-        }
-        
-        // Validate each word against dictionary
-        for (const word of clueWords) {
-            const isValid = await validateWord(word);
-            if (!isValid) {
-                socket.emit('error', { message: `"${word}" is not a valid dictionary word!` });
-                return;
-            }
         }
         
         // Deduct clues and broadcast
